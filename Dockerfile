@@ -1,4 +1,5 @@
 FROM php:7.4.1-apache 
+COPY . .
 RUN a2enmod rewrite
 ADD . /var/www/html
 RUN docker-php-ext-install mysqli

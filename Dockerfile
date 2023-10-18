@@ -3,10 +3,11 @@ RUN a2enmod rewrite
 ADD . /var/www/html
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo pdo_mysql
-RUN apt-get update && \
-    apt-get -qq -y install php-pgsql
+# RUN apt-get update && \
+#     apt-get -qq -y install php-pgsql
 
-RUN apt-get install -qq -y libpq-dev && \
+RUN apt-get update && \
+    apt-get install -qq -y libpq-dev && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
     docker-php-ext-install pdo pdo_pgsql pgsql
 

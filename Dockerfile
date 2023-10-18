@@ -3,15 +3,16 @@ RUN a2enmod rewrite
 ADD . /var/www/html
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo pdo_mysql
-RUN apt-get update && apt-get install php-pgsql -y
-RUN apt-get install -y libpq-dev \
-  && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-  && docker-php-ext-install pdo pdo_pgsql pgsql
-RUN \
-    docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
-    && docker-php-ext-configure mysqli --with-mysqli=mysqlnd \
-    && docker-php-ext-install pdo_mysql \
+RUN apt-get update && \
+    apt-get install php-pgsql -y
 
+RUN apt-get install -y libpq-dev && \
+    docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
+    docker-php-ext-install pdo pdo_pgsql pgsql
+
+RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd && \
+    docker-php-ext-configure mysqli --with-mysqli=mysqlnd && \
+    docker-php-ext-install pdo_mysql && \
 #FROM php:7.4-cli
 #COPY ./local /usr/src/dst_folder
 #WORKDIR /usr/src/dst_folder

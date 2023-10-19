@@ -1,0 +1,31 @@
+version: '3'
+services:
+  php:
+    image: php:7.2-fpm
+    volumes:
+      - ./code:/var/www/html
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./code:/code
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - ./database:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+    ports:
+      - "8081:80"

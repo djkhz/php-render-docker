@@ -40,7 +40,17 @@
 # ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # CMD ["/start.sh"]
+# Use an official PHP runtime as a parent image
 FROM php:7.2-apache
 
-# Install mysqli
-RUN docker-php-ext-install mysqli
+# Install the mysqli extension
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Set the working directory in the container to /var/www/html
+WORKDIR /var/www/html/php
+
+# Copy the current directory contents into the container at /var/www/html
+COPY . /var/www/html/php
+
+# Make port 80 available to the world outside this container
+EXPOSE 80

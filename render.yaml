@@ -11,7 +11,6 @@ services:
   startCommand: 'docker run -d -v ./code:/code my-php'
 - type: pserv
   name: mysql-service
-  env: 'docker'
   image: 'mysql'
   envVars:
   - key: MYSQL_ROOT_PASSWORD

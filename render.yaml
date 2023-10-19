@@ -1,25 +1,23 @@
-version: '3'
 services:
-  web:
-    build: .
-    volumes:
-      - ./php:/var/www/html
-    ports:
-      - 8080:80
-    links:
-      - db
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: my_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db
-    ports:
-      - 8081:80
-    environment:
-      PMA_HOST: db
+- type: web
+  name: php-service
+  env: 'docker'
+  buildCommand: 'docker build -t my-php-app .'
+  startCommand: 'docker run -d -p 10000:80 my-php-app'
+  envVars:
+  - key: 'DATABASE_URL'
+    fromDatabase:
+      name: 'my-mysql'
+      property: 'connectionString'
+- type: pserv
+  name: my-mysql
+  env: 'docker'
+  image: 'mysql:5.7'
+  envVars:
+  - key: MYSQL_ROOT_PASSWORD
+    value: my-secret-pw
+- type: web
+  name: phpmyadmin-service
+  env: 'docker'
+  buildCommand: 'docker build -t my-phpmyadmin .'
+  startCommand: 'docker run -d --link my-mysql:db -p 10001:80 phpmyadmin/phpmyadmin'

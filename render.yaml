@@ -1,23 +1,23 @@
 services:
 - type: web
+  name: nginx-service
+  env: 'docker'
+  buildCommand: 'docker build -t my-nginx .'
+  startCommand: 'docker run -d -p 10000:80 -v ./code:/code -v ./default.conf:/etc/nginx/conf.d/default.conf my-nginx'
+- type: web
   name: php-service
   env: 'docker'
-  buildCommand: 'docker build -t my-php-app .'
-  startCommand: 'docker run -d -p 10000:80 my-php-app'
-  envVars:
-  - key: 'DATABASE_URL'
-    fromDatabase:
-      name: 'my-mysql'
-      property: 'connectionString'
+  buildCommand: 'docker build -t my-php .'
+  startCommand: 'docker run -d -v ./code:/code my-php'
 - type: pserv
-  name: my-mysql
+  name: mysql-service
   env: 'docker'
-  image: mysql:5.7
+  image: 'mysql'
   envVars:
   - key: MYSQL_ROOT_PASSWORD
-    value: my-secret-pw
+    value: root
 - type: web
   name: phpmyadmin-service
   env: 'docker'
   buildCommand: 'docker build -t my-phpmyadmin .'
-  startCommand: 'docker run -d --link my-mysql:db -p 10001:80 phpmyadmin/phpmyadmin'
+  startCommand: 'docker run -d -p 10001:80 -e PMA_HOST=mysql-service -e PMA_USER=root -e PMA_PASSWORD=root my-phpmyadmin'

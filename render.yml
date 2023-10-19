@@ -3,7 +3,7 @@ services:
   web:
     build: .
     volumes:
-      - ./www:/var/www/html
+      - ./php:/var/www/html
     ports:
       - 8080:80
     links:

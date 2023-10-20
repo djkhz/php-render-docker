@@ -41,7 +41,7 @@ ENV REAL_IP_HEADER 1
 # Allow composer to run as root
 #ENV COMPOSER_ALLOW_SUPERUSER 1
 
-#CMD ["/start.sh"]
+CMD ["/start.sh"]
 # Use an official PHP runtime as a parent image
 # FROM php:7.2-apache
 

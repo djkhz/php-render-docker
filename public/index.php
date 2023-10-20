@@ -1,8 +1,12 @@
+<?php
+echo "hello world";
+
+?>
 
 <?php
 // Get the database URL from the environment variables
 $dbUrl = getenv('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a/mysqlrender');
-
+echo "hello world2";
 // Parse the URL to get the connection parameters
 $dbParams = parse_url($dbUrl);
 
@@ -13,7 +17,7 @@ $pass = $dbParams['pass'];
 
 // Set up the PDO connection string
 $dsn = "pgsql:host=$host;dbname=$db;user=$user;password=$pass";
-
+echo "hello world3";
 try {
      // Create a PDO instance
      $pdo = new PDO($dsn);

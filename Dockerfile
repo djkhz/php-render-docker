@@ -20,7 +20,7 @@
 #WORKDIR /usr/src/dst_folder
 #RUN docker-php-ext-install pdo pdo_mysql
 
-FROM php:7.2-fpm
+FROM richarvey/nginx-php-fpm:1.9.1
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
@@ -39,7 +39,7 @@ ENV REAL_IP_HEADER 1
 #ENV LOG_CHANNEL stderr
 
 # Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
+#ENV COMPOSER_ALLOW_SUPERUSER 1
 
 #CMD ["/start.sh"]
 # Use an official PHP runtime as a parent image

@@ -4,7 +4,7 @@ echo "hello world2";
 ?>
 
 <?php
-Get the database URL from the environment variables
+// Get the database URL from the environment variables
 $dbUrl = getenv('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a/mysqlrender');
 echo "hello world2";
 // Parse the URL to get the connection parameters

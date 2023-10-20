@@ -20,15 +20,15 @@ try {
      if($pdo) {
          echo "Connected to the <strong>$db</strong> database successfully!";
          
-         // Perform a SQL query
-         $sql_query = "SELECT * FROM my_table";
-         $result = $pdo->query($sql_query);
+        //  // Perform a SQL query
+        //  $sql_query = "SELECT * FROM my_table";
+        //  $result = $pdo->query($sql_query);
          
-         // Fetch all the data and print it
-         $rows = $result->fetchAll();
-         foreach ($rows as $row) {
-             print_r($row);
-         }
+        //  // Fetch all the data and print it
+        //  $rows = $result->fetchAll();
+        //  foreach ($rows as $row) {
+        //      print_r($row);
+        //  }
      }
 } catch (PDOException $e) {
      echo $e->getMessage();

@@ -8,7 +8,7 @@ echo "hello world2";
 $dbUrl = getenv('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a:5432/mysqlrender');
 
 // Parse the URL to get the connection parameters
-$dbParams = parse_url($dbUrl);
+$dbParams = parse_url('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a:5432/mysqlrender');
 
 $host = $dbParams['host'];
 $db   = ltrim($dbParams['path'], '/');

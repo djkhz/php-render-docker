@@ -30,21 +30,27 @@ try {
      $pdo = new PDO($dsn);
      
      if($pdo) {
-        $query = "SELECT * FROM dristric";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
 
-echo "<table border='1'>";
-echo "<tr><th>DR Name</th><th>DR Name EN</th><th>PR ID</th></tr>";
-while ($row = $stmt->fetch())
-{
-    echo "<tr>";
-    echo "<td>" . $row['dr_name'] . "</td>";
-    echo "<td>" . $row['dr_name_en'] . "</td>";
-    echo "<td>" . $row['pr_id'] . "</td>";
-    echo "</tr>";
+        $result = $pdo->query("DESCRIBE dristric");
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    print_r($row);
 }
-echo "</table>";
+
+//         $query = "SELECT dr_name, dr_name_en, pr_id FROM dristric";
+// $stmt = $pdo->prepare($query);
+// $stmt->execute();
+
+// echo "<table border='1'>";
+// echo "<tr><th>DR Name</th><th>DR Name EN</th><th>PR ID</th></tr>";
+// while ($row = $stmt->fetch())
+// {
+//     echo "<tr>";
+//     echo "<td>" . $row['dr_name'] . "</td>";
+//     echo "<td>" . $row['dr_name_en'] . "</td>";
+//     echo "<td>" . $row['pr_id'] . "</td>";
+//     echo "</tr>";
+// }
+// echo "</table>";
      }
 } catch (PDOException $e) {
      echo $e->getMessage();

@@ -29,11 +29,11 @@ try {
      // Create a PDO instance
      $pdo = new PDO($dsn);
      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     
+
      if($pdo) {
          echo "Connected to the <strong>$db</strong> database successfully!";
 
-         $sql = file_get_contents('lao-province-district-villages.sql');
+         $sql = file_get_contents('output.sql');
 
          try {
              $pdo->exec($sql);

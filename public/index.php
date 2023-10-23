@@ -28,6 +28,7 @@ $dsn = "pgsql:host=$host;port=$port;dbname=$db;user=$user;password=$pass";
 try {
      // Create a PDO instance
      $pdo = new PDO($dsn);
+     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      
      if($pdo) {
 
@@ -36,12 +37,22 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     print_r($row);
 }
 
-//         $query = "SELECT dr_name, dr_name_en, pr_id FROM dristric";
-// $stmt = $pdo->prepare($query);
-// $stmt->execute();
+        $query = "SELECT dr_name, dr_name_en, pr_id FROM dristric";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
 
-// echo "<table border='1'>";
-// echo "<tr><th>DR Name</th><th>DR Name EN</th><th>PR ID</th></tr>";
+echo "<table border='1'>";
+echo "<tr><th>DR Name</th><th>DR Name EN</th><th>PR ID</th></tr>";
+  // set the resulting array to associative
+  $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+  foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+    echo $v;
+  }
+} catch(PDOException $e) {
+  echo "Error: " . $e->getMessage();
+}
+$pdo = null;
+echo "</table>";
 // while ($row = $stmt->fetch())
 // {
 //     echo "<tr>";
@@ -50,8 +61,10 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 //     echo "<td>" . $row['pr_id'] . "</td>";
 //     echo "</tr>";
 // }
-// echo "</table>";
-     }
+// // echo "</table>";
+
+//      }
+//      $pdo =null;
 } catch (PDOException $e) {
      echo $e->getMessage();
 }

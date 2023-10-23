@@ -28,7 +28,7 @@ $pass = $dbParams['pass'];
 //     echo "Successfully connected to the database.\n";
 // }
 // Set up the PDO connection string
-$dsn = "pgsql:host=$host;port$port;dbname=$db;user=$user;password=$pass";
+$dsn = "pgsql:host=$host;port=$port;dbname=$db;user=$user;password=$pass";
 
 try {
      // Create a PDO instance

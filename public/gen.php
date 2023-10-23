@@ -28,7 +28,7 @@ $dsn = "pgsql:host=$host;port=$port;dbname=$db;user=$user;password=$pass";
 try {
      // Create a PDO instance
      $pdo = new PDO($dsn);
-     
+     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      if($pdo) {
          echo "Connected to the <strong>$db</strong> database successfully!";
 

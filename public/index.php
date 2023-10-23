@@ -11,6 +11,7 @@ echo "hello world2";
 $dbParams = parse_url('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a:5432/mysqlrender');
 
 $host = $dbParams['host'];
+$port = $dbParams['port'];
 $db   = ltrim($dbParams['path'], '/');
 $user = $dbParams['user'];
 $pass = $dbParams['pass'];

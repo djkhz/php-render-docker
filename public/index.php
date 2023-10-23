@@ -5,7 +5,7 @@ echo "hello world2";
 
 <?php
 // Get the database URL from the environment variables
-$dbUrl = getenv('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a/mysqlrender');
+$dbUrl = getenv('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a:5432/mysqlrender');
 
 // Parse the URL to get the connection parameters
 $dbParams = parse_url($dbUrl);
@@ -16,7 +16,7 @@ $user = $dbParams['user'];
 $pass = $dbParams['pass'];
 
 
-$conn_string = "host={$host} dbname={$db} user={$user} password={$pass}";
+$conn_string = "host={$host} port={$port} dbname={$db} user={$user} password={$pass}";
 $dbconn = pg_connect($conn_string);
 
 if (!$dbconn) {

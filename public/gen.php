@@ -33,7 +33,7 @@ try {
      if($pdo) {
          echo "Connected to the <strong>$db</strong> database successfully!";
 
-         $sql = file_get_contents('output.sql');
+         $sql = file_get_contents('data.sql');
 
          try {
              $pdo->exec($sql);

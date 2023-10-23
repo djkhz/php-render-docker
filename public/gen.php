@@ -30,21 +30,25 @@ try {
      $pdo = new PDO($dsn);
      
      if($pdo) {
-        $query = "SELECT dr_name, dr_name_en, pr_id FROM dristric";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
+         echo "Connected to the <strong>$db</strong> database successfully!";
 
-echo "<table border='1'>";
-echo "<tr><th>DR Name</th><th>DR Name EN</th><th>PR ID</th></tr>";
-while ($row = $stmt->fetch())
-{
-    echo "<tr>";
-    echo "<td>" . $row['dr_name'] . "</td>";
-    echo "<td>" . $row['dr_name_en'] . "</td>";
-    echo "<td>" . $row['pr_id'] . "</td>";
-    echo "</tr>";
-}
-echo "</table>";
+         $sql = file_get_contents('lao-province-district-villages.sql');
+
+         try {
+             $pdo->exec($sql);
+             echo "SQL file imported successfully.";
+         } catch (PDOException $e) {
+             echo $e->getMessage();
+         }
+        //  // Perform a SQL query
+        //  $sql_query = "SELECT * FROM my_table";
+        //  $result = $pdo->query($sql_query);
+         
+        //  // Fetch all the data and print it
+        //  $rows = $result->fetchAll();
+        //  foreach ($rows as $row) {
+        //      print_r($row);
+        //  }
      }
 } catch (PDOException $e) {
      echo $e->getMessage();

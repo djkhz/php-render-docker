@@ -16,7 +16,7 @@ $db   = ltrim($dbParams['path'], '/');
 $user = $dbParams['user'];
 $pass = $dbParams['pass'];
 
-echo $host .$db .$user .$pass;
+// echo $host .$db .$user .$pass .$port ;
 
 $conn_string = "host={$host} port={$port} dbname={$db} user={$user} password={$pass}";
 $dbconn = pg_connect($conn_string);

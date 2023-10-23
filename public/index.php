@@ -8,13 +8,14 @@ echo "hello world2";
 $dbUrl = getenv('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a:5432/mysqlrender');
 
 // Parse the URL to get the connection parameters
-$dbParams = parse_url('postgres://mysqlrender_user:c2oauXpOC2xC1hnPFuhOdDDCJWM0LlmG@dpg-ckog86tih1lc73f8eafg-a:5432/mysqlrender');
+$dbParams = parse_url($dbUrl);
 
 $host = $dbParams['host'];
 $db   = ltrim($dbParams['path'], '/');
 $user = $dbParams['user'];
 $pass = $dbParams['pass'];
 
+echo $host .$db .$user .$pass;
 
 $conn_string = "host={$host} port={$port} dbname={$db} user={$user} password={$pass}";
 $dbconn = pg_connect($conn_string);

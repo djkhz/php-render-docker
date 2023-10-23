@@ -30,7 +30,7 @@ try {
      $pdo = new PDO($dsn);
      
      if($pdo) {
-        $query = "SELECT dr_name, dr_name_en, pr_id FROM dristric";
+        $query = "SELECT * FROM dristric";
 $stmt = $pdo->prepare($query);
 $stmt->execute();
 

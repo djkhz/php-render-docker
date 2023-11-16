@@ -70,7 +70,7 @@ $tableColumns = implode(',', array_map(function ($key) {
 $columnNames = implode(',', array_map('', $keys));
 // Create a string for values in the insert query
 $values = implode(',', array_map(function ($key) {
-    return "'" . ($data[$key]) . "'";
+    return "'" . ($data[."'".$key."'".]) . "'";
 }, $keys));
 // return "'" . pg_escape_string($data[$key]) . "'";
 // Create a table if it doesn't exist

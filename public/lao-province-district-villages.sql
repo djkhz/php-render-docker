@@ -22,17 +22,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dristric`
+-- Table structure for table dristric
 --
 
-CREATE TABLE `dristric` (`dr_id` int(3) NOT NULL,`dr_name` char(200) COLLATE utf8_unicode_ci NOT NULL,`dr_name_en` char(200) COLLATE utf8_unicode_ci NOT NULL,`pr_id` int(2) NOT NULL
+CREATE TABLE dristric (dr_id int(3) NOT NULL,dr_name varchar(200) COLLATE utf8_unicode_ci NOT NULL,dr_name_en varchar(200) COLLATE utf8_unicode_ci NOT NULL,pr_id int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `dristric`
+-- Dumping data for table dristric
 --
 
-INSERT INTO `dristric` (`dr_id`, `dr_name`, `dr_name_en`, `pr_id`) VALUES
+INSERT INTO dristric (dr_id, dr_name, dr_name_en, pr_id) VALUES
 (101, 'ຈັນທະບູລີ', 'Chanthabuly', 1),
 (102, 'ສີໂຄດຕະບອງ', 'Sikhottabong', 1),
 (103, 'ໄຊເສດຖາ', 'Xaysetha', 1),
@@ -185,17 +185,17 @@ INSERT INTO `dristric` (`dr_id`, `dr_name`, `dr_name_en`, `pr_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `province`
+-- Table structure for table province
 --
 
-CREATE TABLE `province` (`pr_id` int(2) NOT NULL,`pr_name` char(200) COLLATE utf8_unicode_ci NOT NULL,`pr_name_en` char(200) COLLATE utf8_unicode_ci NOT NULL
+CREATE TABLE province (pr_id int(2) NOT NULL,pr_name varchar(200) COLLATE utf8_unicode_ci NOT NULL,pr_name_en varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `province`
+-- Dumping data for table province
 --
 
-INSERT INTO `province` (`pr_id`, `pr_name`, `pr_name_en`) VALUES
+INSERT INTO province (pr_id, pr_name, pr_name_en) VALUES
 (1, 'ນະຄອນຫລວງວຽງຈັນ', 'Vientiane capital'),
 (2, 'ຜົ້ງສາລີ', 'Phongsali'),
 (3, 'ຫລວງນ້ຳທາ', 'Louang Namtha'),
@@ -218,17 +218,17 @@ INSERT INTO `province` (`pr_id`, `pr_name`, `pr_name_en`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `village`
+-- Table structure for table village
 --
 
-CREATE TABLE `village` (`vill_id` int(10) UNSIGNED NOT NULL,`vill_name` char(200) COLLATE utf8_unicode_ci NOT NULL,`vill_name_en` char(200) COLLATE utf8_unicode_ci NOT NULL,`dr_id` int(3) NOT NULL
+CREATE TABLE village (vill_id int(10) UNSIGNED NOT NULL,vill_name varchar(200) COLLATE utf8_unicode_ci NOT NULL,vill_name_en varchar(200) COLLATE utf8_unicode_ci NOT NULL,dr_id int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `village`
+-- Dumping data for table village
 --
 
-INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
+INSERT INTO village (vill_id, vill_name, vill_name_en, dr_id) VALUES
 (10101, 'ໜອງປິງ', 'Nongping', 101),
 (10102, 'ບໍ່ນາງົວ', 'Bornangoua', 101),
 (10103, 'ຫ້ວຍຫົງ', 'Houyhong', 101),
@@ -1720,7 +1720,7 @@ INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
 (40186, 'ໂຮມໄຊ', '', 401),
 (40187, 'ມູນເມືອງ', '', 401),
 (40188, 'ຫ້ວຍເຮ້ຍ', '', 401);
-INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
+INSERT INTO village (vill_id, vill_name, vill_name_en, dr_id) VALUES
 (40189, 'ນາຈາງ+ຫ້ວຍຕຳ', '', 401),
 (40190, 'ສະນາງປິ', '', 401),
 (40191, 'ຫ້ວຍລ້ຽງ+ພຽງໄຊ', '', 401),
@@ -3273,7 +3273,7 @@ INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
 (70219, 'ນາເຮື້ອ', '', 702),
 (70220, 'ຫວ້ຍມອນ', '', 702),
 (70221, 'ໂພນທອງ', '', 702);
-INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
+INSERT INTO village (vill_id, vill_name, vill_name_en, dr_id) VALUES
 (70222, 'ນາວຽງ', '', 702),
 (70223, 'ພຽງສາ', '', 702),
 (70224, 'ກໍໄຮ', '', 702),
@@ -4800,7 +4800,7 @@ INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
 (905008, 'ພູ​ລີນ-​ພູ​ມອນ', '', 905),
 (905009, 'ທົ່ງ​ເປີ້', '', 905),
 (905010, 'ນາ​ເມືອງ-ໃໝ່', '', 905);
-INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
+INSERT INTO village (vill_id, vill_name, vill_name_en, dr_id) VALUES
 (905011, 'ນ້ຳ​ເຢັນ-ນ້ຳໂຮງ', '', 905),
 (905012, 'ຖ້ຳສ່ອຍ', '', 905),
 (905013, 'ຜາ​ແດງ', '', 905),
@@ -6215,7 +6215,7 @@ INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
 (1206061, 'ຈະແລດ', '', 1206),
 (1206062, 'ໂຮງ', '', 1206),
 (1206063, 'ວັງຫລວງ', '', 1206);
-INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
+INSERT INTO village (vill_id, vill_name, vill_name_en, dr_id) VALUES
 (1206064, 'ໜອງກຸ້ງ', '', 1206),
 (1206065, 'ບ້ານລາດ', '', 1206),
 (1206066, 'ບ້ານທັບລາວ', '', 1206),
@@ -7634,7 +7634,7 @@ INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
 (1406009, 'ບົວລະພາ', '', 1406),
 (1406010, 'ບຶງກາງ', '', 1406),
 (1406011, 'ຄົງນ້ອຍ', '', 1406);
-INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
+INSERT INTO village (vill_id, vill_name, vill_name_en, dr_id) VALUES
 (1406012, 'ບຶງກາງ', '', 1406),
 (1406013, 'ໜອງເກາະຊອງ', '', 1406),
 (1406014, 'ໝອງສະພັງ', '', 1406),
@@ -9024,7 +9024,7 @@ INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
 (1805011, 'ຖ້ຳດິນ', 'Thamdin', 1805),
 (1805012, 'ພູປ່າມັນ', 'Phoupaman', 1805),
 (1805013, 'ນໍ້າຍີ້ງ', 'Namying', 1805);
-INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
+INSERT INTO village (vill_id, vill_name, vill_name_en, dr_id) VALUES
 (1805014, 'ບ້ານຊຽງມີ', 'Xiengmy', 1805),
 (1805015, 'ນໍ້າຄຸຍ', 'Numkeu', 1805),
 (1805016, 'ຜາດ່າງ', 'Phadang', 1805),
@@ -9181,19 +9181,19 @@ INSERT INTO `village` (`vill_id`, `vill_name`, `vill_name_en`, `dr_id`) VALUES
 --
 
 --
--- Indexes for table `dristric`
+-- Indexes for table dristric
 --
-ALTER TABLE `dristric`ADD PRIMARY KEY (`dr_id`);
+ALTER TABLE dristricADD PRIMARY KEY (dr_id);
 
 --
--- Indexes for table `province`
+-- Indexes for table province
 --
-ALTER TABLE `province`ADD PRIMARY KEY (`pr_id`);
+ALTER TABLE provinceADD PRIMARY KEY (pr_id);
 
 --
--- Indexes for table `village`
+-- Indexes for table village
 --
-ALTER TABLE `village`ADD PRIMARY KEY (`vill_id`),ADD UNIQUE KEY `vill_id` (`vill_id`);
+ALTER TABLE villageADD PRIMARY KEY (vill_id),ADD UNIQUE KEY vill_id (vill_id);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

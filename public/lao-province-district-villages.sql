@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `dristric`
 --
 
-CREATE TABLE `dristric` (`dr_id` int(3) NOT NULL,`dr_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,`dr_name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,`pr_id` int(2) NOT NULL
+CREATE TABLE `dristric` (`dr_id` int(3) NOT NULL,`dr_name` char(200) COLLATE utf8_unicode_ci NOT NULL,`dr_name_en` char(200) COLLATE utf8_unicode_ci NOT NULL,`pr_id` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -188,7 +188,7 @@ INSERT INTO `dristric` (`dr_id`, `dr_name`, `dr_name_en`, `pr_id`) VALUES
 -- Table structure for table `province`
 --
 
-CREATE TABLE `province` (`pr_id` int(2) NOT NULL,`pr_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,`pr_name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+CREATE TABLE `province` (`pr_id` int(2) NOT NULL,`pr_name` char(200) COLLATE utf8_unicode_ci NOT NULL,`pr_name_en` char(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -221,7 +221,7 @@ INSERT INTO `province` (`pr_id`, `pr_name`, `pr_name_en`) VALUES
 -- Table structure for table `village`
 --
 
-CREATE TABLE `village` (`vill_id` int(10) UNSIGNED NOT NULL,`vill_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,`vill_name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,`dr_id` int(3) NOT NULL
+CREATE TABLE `village` (`vill_id` int(10) UNSIGNED NOT NULL,`vill_name` char(200) COLLATE utf8_unicode_ci NOT NULL,`vill_name_en` char(200) COLLATE utf8_unicode_ci NOT NULL,`dr_id` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

@@ -52,10 +52,10 @@ $data = json_decode($json_data, true);
 
 
 // Convert PHP array to JSON
-$jsonData = json_encode($json_data);
+$jsonData = json_encode($data);
 
 // Extract keys from JSON data for creating table columns
-$keys = array_keys($json_data);
+$keys = array_keys($jsonData);
 
 // Create a string for table columns
 $tableColumns = implode(',', array_map(function ($key) {

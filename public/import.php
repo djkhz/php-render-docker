@@ -59,6 +59,7 @@ if (!is_array($data) || empty($data)) {
 // Extract keys from JSON data for creating table columns
 $keys = array_keys($data);
 echo '<pre>'; print_r($keys); echo '</pre>';
+echo '<pre>'; array_keys($keys); echo '</pre>';
 // Create a string for table columns
 $tableColumns = implode(',', array_map(function ($key) {
     return $key . ' TEXT';

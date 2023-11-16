@@ -44,14 +44,12 @@ $password_pg = $dbParams['pass'];
 // Replace this with the path to your JSON file
 $json_file_path = 'lao-province-district-villages.json';
 
-// Read the JSON file
+
+// Read JSON file
 $json_data = file_get_contents($json_file_path);
 
-// Decode the JSON data
+// Decode JSON data
 $data = json_decode($json_data, true);
-
-// Convert PHP array to JSON
-$jsonData = json_encode($data);
 
 // Ensure the JSON data is an associative array
 if (!is_array($data) || empty($data)) {
@@ -66,34 +64,36 @@ $tableColumns = implode(',', array_map(function ($key) {
     return pg_escape_identifier($key) . ' TEXT';
 }, $keys));
 
+// Create a string for column names in the insert query
+$columnNames = implode(',', array_map('pg_escape_identifier', $keys));
+
+// Create a string for values in the insert query
+$values = implode(',', array_map(function ($key) {
+    return "'" . pg_escape_string($data[$key]) . "'";
+}, $keys));
+
 // Create a table if it doesn't exist
-$createTableQuery = "CREATE TABLE IF NOT EXISTS your_table_name ($tableColumns);";
-echo $createTableQuery; 
+$createTableQuery = "CREATE TABLE IF NOT EXISTS your_table_name ($tableColumns)";
+echo $createTableQuery;
 // $result = pg_query($conn, $createTableQuery);
 
 // if (!$result) {
 //     die("Error in creating table: " . pg_last_error());
 // }
 
-
-// if (!$result) {
-//     die("Error in creating table: " . pg_last_error());
-// }
-
-// Insert data into the table
-$insertQuery = "INSERT INTO your_table_name (data) VALUES ('" . pg_escape_string($json_data) . "');";
-//excute
-//$result = pg_query($conn, $insertQuery);
-echo $insertQuery; 
+// Insert data into the table with specific column names
+$insertQuery = "INSERT INTO your_table_name ($columnNames) VALUES ($values)";
+echo $insertQuery;
+// $result = pg_query($conn, $insertQuery);
 
 // if (!$result) {
 //     die("Error in inserting data: " . pg_last_error());
 // }
 
-// Close PostgreSQL connection
+// // Close PostgreSQL connection
 // pg_close($conn);
 
-// echo "Data inserted into PostgreSQL successfully!";
+echo "Table and data inserted into PostgreSQL successfully!";
 
 
 

@@ -61,17 +61,17 @@ $keys = array_keys($data);
 echo '<pre>'; print_r($keys); echo '</pre>';
 // Create a string for table columns
 $tableColumns = implode(',', array_map(function ($key) {
-    return pg_escape_identifier($key) . ' TEXT';
+    return $key . ' TEXT';
 }, $keys));
-
+// pg_escape_identifier($key)
 // Create a string for column names in the insert query
-$columnNames = implode(',', array_map('pg_escape_identifier', $keys));
-
+// $columnNames = implode(',', array_map('pg_escape_identifier', $keys));
+$columnNames = implode(',', array_map('', $keys));
 // Create a string for values in the insert query
 $values = implode(',', array_map(function ($key) {
-    return "'" . pg_escape_string($data[$key]) . "'";
+    return "'" . ($data[$key]) . "'";
 }, $keys));
-
+// return "'" . pg_escape_string($data[$key]) . "'";
 // Create a table if it doesn't exist
 $createTableQuery = "CREATE TABLE IF NOT EXISTS your_table_name ($tableColumns)";
 echo $createTableQuery;

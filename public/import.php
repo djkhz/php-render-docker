@@ -69,14 +69,14 @@ $tableColumns = implode(',', array_map(function ($key) {
 // $columnNames = implode(',', array_map('pg_escape_identifier', $keys));
 $columnNames = implode(',', array_map(function ($key) {
     return $key;
-}, $keys[0]));
+}, $keys['dristric']));
 // Create a string for values in the insert query
 // $values = implode(',', array_map(function ($key) {
 //     return "'" . ($data["'".$key."'"]) . "'";
 // }, $keys));
 $values = implode(',', array_map(function ($key) {
     return $key;
-}, $keys[0][0]));
+}, $keys['dristric'][0]));
 // return "'" . pg_escape_string($data[$key]) . "'";
 // Create a table if it doesn't exist
 $createTableQuery = "CREATE TABLE IF NOT EXISTS your_table_name ($tableColumns)";

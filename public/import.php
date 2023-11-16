@@ -52,7 +52,7 @@ $data = json_decode($json_data, true);
 
 
 // Convert PHP array to JSON
-$jsonData = json_encode($data);
+$jsonData = json_encode($json_data);
 
 // Extract keys from JSON data for creating table columns
 $keys = array_keys($data);
@@ -73,7 +73,7 @@ if (!$result) {
 }
 
 // Insert data into the table
-$insertQuery = "INSERT INTO your_table_name (data) VALUES ('" . pg_escape_string($jsonData) . "');";
+$insertQuery = "INSERT INTO your_table_name (data) VALUES ('" . pg_escape_string($json_data) . "');";
 //excute
 //$result = pg_query($conn, $insertQuery);
 echo $insertQuery; 

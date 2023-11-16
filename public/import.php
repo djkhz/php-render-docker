@@ -55,7 +55,7 @@ $data = json_decode($json_data, true);
 $jsonData = json_encode($json_data);
 
 // Extract keys from JSON data for creating table columns
-$keys = array_keys($jsonData);
+$keys = array_keys($json_data);
 
 // Create a string for table columns
 $tableColumns = implode(',', array_map(function ($key) {
@@ -73,7 +73,7 @@ echo $createTableQuery;
 // }
 
 // Insert data into the table
-$insertQuery = "INSERT INTO your_table_name (data) VALUES ('" . pg_escape_string($jsonData) . "');";
+$insertQuery = "INSERT INTO your_table_name (data) VALUES ('" . pg_escape_string($json_data) . "');";
 //excute
 //$result = pg_query($conn, $insertQuery);
 echo $insertQuery; 

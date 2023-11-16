@@ -58,7 +58,7 @@ if (!is_array($data) || empty($data)) {
 
 // Extract keys from JSON data for creating table columns
 $keys = array_keys($data);
-print $keys;
+echo '<pre>'; print_r($array); echo '</pre>';
 // Create a string for table columns
 $tableColumns = implode(',', array_map(function ($key) {
     return pg_escape_identifier($key) . ' TEXT';

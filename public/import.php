@@ -18,26 +18,78 @@ $password_pg = $dbParams['pass'];
 // $port_pg = 'your_postgresql_port';
 
 // Replace with the path to your converted SQL dump file
-$sql_dump_file = 'lao-province-district-villages.sql';
+// $sql_dump_file = 'lao-province-district-villages.sql';
 
-// Connect to PostgreSQL
-$conn_pg = pg_connect("dbname=$dbname_pg user=$user_pg password=$password_pg host=$host_pg port=$port_pg");
+// // Connect to PostgreSQL
+// $conn_pg = pg_connect("dbname=$dbname_pg user=$user_pg password=$password_pg host=$host_pg port=$port_pg");
 
-if (!$conn_pg) {
+// if (!$conn_pg) {
+//     die("Error in connection: " . pg_last_error());
+// }
+
+// // Read and execute SQL dump file
+// $sql_content = file_get_contents($sql_dump_file);
+
+// $result = pg_query($conn_pg, $sql_content);
+
+// if (!$result) {
+//     die("Error in executing SQL: " . pg_last_error());
+// }
+
+// // Close PostgreSQL connection
+// pg_close($conn_pg);
+
+// echo "Data imported from MySQL to PostgreSQL successfully!";
+
+// Replace this with the path to your JSON file
+$json_file_path = 'lao-province-district-villages.json';
+
+// Read the JSON file
+$json_data = file_get_contents($json_file_path);
+
+// Decode the JSON data
+$data = json_decode($json_data, true);
+
+// Connect to the PostgreSQL database
+$conn = pg_connect("dbname=$dbname user=$user password=$password host=$host port=$port");
+
+if (!$conn) {
     die("Error in connection: " . pg_last_error());
 }
 
-// Read and execute SQL dump file
-$sql_content = file_get_contents($sql_dump_file);
+// Customize this query based on your table structure
+$create_table_query = "
+    CREATE TABLE IF NOT EXISTS your_table_name (
+        id SERIAL PRIMARY KEY,
+        data JSONB
+    );
+";
 
-$result = pg_query($conn_pg, $sql_content);
+// Execute the query to create the table
+$result = pg_query($conn, $create_table_query);
 
 if (!$result) {
-    die("Error in executing SQL: " . pg_last_error());
+    die("Error in creating table: " . pg_last_error());
 }
 
-// Close PostgreSQL connection
-pg_close($conn_pg);
+// Iterate over the data and insert it into the table
+foreach ($data as $item) {
+    // Escape and sanitize the data as needed
+    $escaped_data = pg_escape_string(json_encode($item));
 
-echo "Data imported from MySQL to PostgreSQL successfully!";
+    // Customize this query based on your table structure
+    $insert_query = "INSERT INTO your_table_name (data) VALUES ('$escaped_data');";
+
+    // Execute the query to insert data
+    $result = pg_query($conn, $insert_query);
+    echo $insert_query;
+    if (!$result) {
+        die("Error in inserting data: " . pg_last_error());
+    }
+}
+
+// Close the database connection
+pg_close($conn);
+
+echo "Data imported successfully!";
 ?>

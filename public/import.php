@@ -50,12 +50,16 @@ $json_data = file_get_contents($json_file_path);
 // Decode the JSON data
 $data = json_decode($json_data, true);
 
-
 // Convert PHP array to JSON
 $jsonData = json_encode($data);
 
+// Ensure the JSON data is an associative array
+if (!is_array($data) || empty($data)) {
+    die("Invalid JSON data.");
+}
+
 // Extract keys from JSON data for creating table columns
-$keys = array_keys($jsonData);
+$keys = array_keys($data);
 
 // Create a string for table columns
 $tableColumns = implode(',', array_map(function ($key) {
@@ -64,9 +68,13 @@ $tableColumns = implode(',', array_map(function ($key) {
 
 // Create a table if it doesn't exist
 $createTableQuery = "CREATE TABLE IF NOT EXISTS your_table_name ($tableColumns);";
-//excute
-//$result = pg_query($conn, $createTableQuery);
 echo $createTableQuery; 
+// $result = pg_query($conn, $createTableQuery);
+
+// if (!$result) {
+//     die("Error in creating table: " . pg_last_error());
+// }
+
 
 // if (!$result) {
 //     die("Error in creating table: " . pg_last_error());

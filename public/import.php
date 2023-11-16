@@ -55,7 +55,7 @@ $data = json_decode($json_data, true);
 $jsonData = json_encode($json_data);
 
 // Extract keys from JSON data for creating table columns
-$keys = array_keys($data);
+$keys = array_keys($jsonData);
 
 // Create a string for table columns
 $tableColumns = implode(',', array_map(function ($key) {
@@ -68,19 +68,19 @@ $createTableQuery = "CREATE TABLE IF NOT EXISTS your_table_name ($tableColumns);
 //$result = pg_query($conn, $createTableQuery);
 echo $createTableQuery; 
 
-if (!$result) {
-    die("Error in creating table: " . pg_last_error());
-}
+// if (!$result) {
+//     die("Error in creating table: " . pg_last_error());
+// }
 
 // Insert data into the table
-$insertQuery = "INSERT INTO your_table_name (data) VALUES ('" . pg_escape_string($json_data) . "');";
+$insertQuery = "INSERT INTO your_table_name (data) VALUES ('" . pg_escape_string($jsonData) . "');";
 //excute
 //$result = pg_query($conn, $insertQuery);
 echo $insertQuery; 
 
-if (!$result) {
-    die("Error in inserting data: " . pg_last_error());
-}
+// if (!$result) {
+//     die("Error in inserting data: " . pg_last_error());
+// }
 
 // Close PostgreSQL connection
 // pg_close($conn);

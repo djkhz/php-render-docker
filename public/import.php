@@ -51,7 +51,8 @@ $json_data = file_get_contents($json_file_path);
 $data = json_decode($json_data, true);
 
 // Connect to the PostgreSQL database
-$conn = pg_connect("dbname=$dbname user=$user password=$password host=$host port=$port");
+// $conn = pg_connect("dbname=$dbname user=$user password=$password host=$host port=$port");
+$conn = pg_connect("dbname=$dbname_pg user=$user_pg password=$password_pg host=$host_pg port=$port_pg");
 
 if (!$conn) {
     die("Error in connection: " . pg_last_error());

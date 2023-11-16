@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- Table structure for table dristric
 --
 
-CREATE TABLE dristric (dr_id int(3) NOT NULL,dr_name varchar(200) COLLATE utf8_unicode_ci NOT NULL,dr_name_en varchar(200) COLLATE utf8_unicode_ci NOT NULL,pr_id int(2) NOT NULL
+CREATE TABLE dristric (dr_id int(3) NOT NULL,dr_name char(200) COLLATE utf8_unicode_ci NOT NULL,dr_name_en char(200) COLLATE utf8_unicode_ci NOT NULL,pr_id int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
